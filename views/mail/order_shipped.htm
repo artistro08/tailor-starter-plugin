@@ -1,0 +1,18 @@
+layout  = default
+subject = Your Order Just Shipped
+==
+Hey {{ customer_name }}, Your order just shipped! View your tracking info below:
+
+<strong>Tracking Number:</strong> {{ tracking_number }}<br>
+{% if tracking_url %}
+<strong>Tracking URL:</strong> {{ tracking_url }}
+{% endif %}
+
+<strong>Order Details:</strong><br>
+{{ order_contents|nl2br }}
+
+<strong>Shipping Method:</strong> {{ shipping_method }}<br>
+<strong>Address:</strong><br>
+{{ customer_address|nl2br }}<br>
+
+<strong>Order Total:</strong> {{ total }}

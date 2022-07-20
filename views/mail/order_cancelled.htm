@@ -1,0 +1,17 @@
+layout  = default
+subject = Your Order Was Cancelled
+==
+Hey {{ customer_name }}, Your order was cancelled. Below is the reason why:
+
+{{ cancellation_message|nl2br }}
+
+<strong>Order Details:</strong><br>
+{{ order_contents|nl2br }}
+
+<strong>Shipping Method:</strong> {{ shipping_method }}<br>
+<strong>Address:</strong><br>
+{{ customer_address|nl2br }}<br>
+
+<strong>Refund Amount:</strong> {{ total }}
+
+We're sorry for the inconvenience. You should expect a refund in 5-10 business days. If you feel that this was an error, reply to this email, and we will get back with you as quickly as possible.

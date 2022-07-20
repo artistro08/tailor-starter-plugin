@@ -1,0 +1,15 @@
+layout  = default
+subject = You have a new order
+==
+Hey {{ site_name }}, Congrats! You have a new order!
+
+<strong>Order Details:</strong><br>
+{{ order_contents|nl2br }}
+
+<strong>Customer Name:</strong> {{ customer_name }}<br>
+<strong>Customer Email:</strong> {{ customer_email }}<br>
+<strong>Shipping Method:</strong> {{ shipping_method }}<br>
+<strong>Address:</strong><br>
+{{ customer_address|nl2br }}<br>
+
+<strong>Order Total:</strong> {{ total }}

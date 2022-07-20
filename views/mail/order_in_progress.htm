@@ -1,0 +1,13 @@
+layout  = default
+subject = "We're working on your order"
+==
+Hey {{ customer_name }}, Your order is being processed. View your order details below:
+
+<strong>Order Details:</strong><br>
+{{ order_contents|nl2br }}
+
+<strong>Shipping Method:</strong> {{ shipping_method }}<br>
+<strong>Address:</strong><br>
+{{ customer_address|nl2br }}<br>
+
+<strong>Order Total:</strong> {{ total }}
