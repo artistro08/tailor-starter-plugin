@@ -1,7 +1,7 @@
 {
-    "name": "artistr08/tailorstarter-plugin",
+    "name": "artistro08/tailorstarter-plugin",
     "type": "october-plugin",
-    "description": "No description provided yet...",
+    "description": "A companion plugin to go with the Tailor Starter Theme.",
     "require": {
         "composer/installers": "~1.0"
     }
