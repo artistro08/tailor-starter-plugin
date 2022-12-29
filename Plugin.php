@@ -3,6 +3,7 @@
 use Backend;
 use Event;
 use Log;
+use Validator;
 use Mail;
 use System\Classes\PluginBase;
 use Tailor\Models\EntryRecord;
@@ -34,9 +35,10 @@ class Plugin extends PluginBase
      *
      * @return void
      */
-    public function register()
-    {
-
+    public function register() {
+        $this->app->resolving('validator', function($validator) {
+            Validator::extend('recaptcha', 'Artistro08\TailorStarter\Classes\ReCaptchaValidator@validateReCaptcha', 'Recaptcha validation failed. Please refresh and try again.');
+        });
     }
 
     /**
