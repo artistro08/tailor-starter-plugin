@@ -1,0 +1,7 @@
+layout  = default
+subject = New Form Submission from {{ form_name|raw }}
+==
+Hey {{ recipient_name }}, You have a new form submission
+
+<strong>Form Data:</strong><br>
+{{ form_data|nl2br }}
