@@ -200,7 +200,8 @@ class Plugin extends PluginBase
             'artistro08.tailorstarter::mail.new_order_admin',
             'artistro08.tailorstarter::mail.order_cancelled',
             'artistro08.tailorstarter::mail.order_in_progress',
-            'artistro08.tailorstarter::mail.order_shipped'
+            'artistro08.tailorstarter::mail.order_shipped',
+            'artistro08.tailorstarter::mail.form_submission'
         ];
     }
 
