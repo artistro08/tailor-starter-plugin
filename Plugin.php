@@ -255,4 +255,23 @@ class Plugin extends PluginBase
             ],
         ];
     }
+    
+    public function registerMarkupTags()
+    {
+        $filters = [
+            'money' => function ($value) {
+                // Get the settings from the site
+                $settings = GlobalRecord::findForGlobal('Content\Settings');
+
+                $currency = $settings->products_currency_symbol ?? '$';
+                $place_before = $settings->products_place_symbol_before ?? true;
+
+                return ($place_before ? $currency : '') . number_format($value, 2, ".", ",") . (!$place_before ? $currency : '');
+            },
+        ];
+
+        return [
+            'filters' => $filters,
+        ];
+    }
 }
