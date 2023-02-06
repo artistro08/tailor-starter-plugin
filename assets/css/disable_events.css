@@ -1,0 +1,11 @@
+.field-repeater > .field-repeater-builder li.field-repeater-group[data-repeater-group="events"] {
+  display: none;
+}
+
+.field-repeater > ul > li.field-repeater-item .field-repeater > ul > li.field-repeater-item[data-item-title="Events"] {
+  display: none;
+}
+
+.control-filelist.filelist-hero ul li > a[data-request-data="_repeater_group: 'events'"] {
+  display: none;
+}

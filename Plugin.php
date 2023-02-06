@@ -191,6 +191,23 @@ class Plugin extends PluginBase
             });
         });
 
+        // Hide Blocks if Shop or Events are disabled
+        $settings = GlobalRecord::findForGlobal('Content\Settings');
+        $enable_shop = $settings->enable_shop;
+        $enable_events = $settings->enable_events;
+
+        if(!$enable_events)
+            Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
+                $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_events.css');
+                $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_events.js');
+            });
+        
+        if(!$enable_shop)
+            Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
+                $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_shop.css');
+                $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_shop.js');
+            });
+        
     }
 
     public function registerMailTemplates()
@@ -205,54 +222,4 @@ class Plugin extends PluginBase
         ];
     }
 
-    /**
-     * Registers any front-end components implemented in this plugin.
-     *
-     * @return array
-     */
-    public function registerComponents()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'Artistr08\TailorStarter\Components\MyComponent' => 'myComponent',
-        ];
-    }
-
-    /**
-     * Registers any backend permissions used by this plugin.
-     *
-     * @return array
-     */
-    public function registerPermissions()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'artistr08.tailorstarter.some_permission' => [
-                'tab' => 'TailorStarter',
-                'label' => 'Some permission'
-            ],
-        ];
-    }
-
-    /**
-     * Registers backend navigation items for this plugin.
-     *
-     * @return array
-     */
-    public function registerNavigation()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'tailorstarter' => [
-                'label'       => 'TailorStarter',
-                'url'         => Backend::url('artistr08/tailorstarter/mycontroller'),
-                'icon'        => 'icon-leaf',
-                'permissions' => ['artistr08.tailorstarter.*'],
-                'order'       => 500,
-            ],
-        ];
-    }
 }
