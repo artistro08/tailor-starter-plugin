@@ -5,3 +5,4 @@
 1.0.6: Added Google reCAPTCHA Validation
 1.0.7: Added a form submission mail template
 1.0.8: Added a form submission mail template
+1.0.10: Hide shop or event entries if disabled in tailor global settings
