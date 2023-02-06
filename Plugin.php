@@ -196,17 +196,19 @@ class Plugin extends PluginBase
         $enable_shop = $settings->enable_shop;
         $enable_events = $settings->enable_events;
 
-        if(!$enable_events)
-            Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
-                $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_events.css');
-                $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_events.js');
-            });
-        
-        if(!$enable_shop)
-            Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
-                $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_shop.css');
-                $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_shop.js');
-            });
+        if(!empty($settings)){
+            if(!$enable_events)
+                Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
+                    $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_events.css');
+                    $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_events.js');
+                });
+            
+            if(!$enable_shop)
+                Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
+                    $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_shop.css');
+                    $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_shop.js');
+                });
+        }
         
     }
 
