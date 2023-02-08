@@ -46,3 +46,9 @@ observeProducts(".mainmenu-item a", (element) => {
     element.style.display = "none";
   }
 });
+
+observeProducts(".mainmenu-item a", (element) => {
+  if (element.innerText.trim() === "Shop") {
+    element.parentElement.style.display = "none";
+  }
+});

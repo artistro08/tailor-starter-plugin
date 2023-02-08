@@ -30,3 +30,9 @@ observeEvents(".mainmenu-item a", (element) => {
     element.style.display = "none";
   }
 });
+
+observeEvents(".mainmenu-item a", (element) => {
+  if (element.innerText.trim() === "Events") {
+    element.parentElement.style.display = "none";
+  }
+});
