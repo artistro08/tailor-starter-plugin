@@ -26,7 +26,7 @@ class Plugin extends PluginBase
         return [
             'name'        => 'Tailor Starter',
             'description' => 'A companion plugin to go with the Tailor Starter Theme.',
-            'author'      => 'Artistr08',
+            'author'      => 'Artistro08',
             'icon'        => 'icon-archive'
         ];
     }
