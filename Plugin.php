@@ -1,4 +1,4 @@
-<?php namespace Artistro08\TailorStarter;
+<?php namespace Artistro08\TailorStarterCompanion;
 
 use Backend;
 use Event;
@@ -38,7 +38,7 @@ class Plugin extends PluginBase
      */
     public function register() {
         $this->app->resolving('validator', function($validator) {
-            Validator::extend('recaptcha', 'Artistro08\TailorStarter\Classes\ReCaptchaValidator@validateReCaptcha', 'Recaptcha validation failed. Please refresh and try again.');
+            Validator::extend('recaptcha', 'Artistro08\TailorStarterCompanion\Classes\ReCaptchaValidator@validateReCaptcha', 'Recaptcha validation failed. Please refresh and try again.');
         });
     }
 
@@ -87,12 +87,12 @@ class Plugin extends PluginBase
                     if($order_status == 'new' && !$sent_receipt) {
 
                         // Send Customer Email
-                        Mail::send('artistro08.tailorstarter::mail.new_order', $mail_data, function($message) use ($model) {
+                        Mail::send('artistro08.tailorstartercompanion::mail.new_order', $mail_data, function($message) use ($model) {
                             $message->to($model->customer_email, $model->customer_name);
                         });
 
                         // Send Admin Email
-                        Mail::send('artistro08.tailorstarter::mail.new_order_admin', $mail_data, function($message) use ($settings, $model) {
+                        Mail::send('artistro08.tailorstartercompanion::mail.new_order_admin', $mail_data, function($message) use ($settings, $model) {
                             $message->to($settings->notification_email, $model->notification_email_recipient_name);
                         });
 
@@ -104,7 +104,7 @@ class Plugin extends PluginBase
                     if($order_status == 'in_progress' && !$sent_in_progress) {
 
                         // Send Customer Email
-                        Mail::send('artistro08.tailorstarter::mail.order_in_progress', $mail_data, function($message) use ($model) {
+                        Mail::send('artistro08.tailorstartercompanion::mail.order_in_progress', $mail_data, function($message) use ($model) {
                             $message->to($model->customer_email, $model->customer_name);
                         });
 
@@ -116,7 +116,7 @@ class Plugin extends PluginBase
                     if($order_status == 'shipped' && !$sent_tracking) {
 
                         // Send Customer Email
-                        Mail::send('artistro08.tailorstarter::mail.order_shipped', $mail_data, function($message) use ($model) {
+                        Mail::send('artistro08.tailorstartercompanion::mail.order_shipped', $mail_data, function($message) use ($model) {
                             $message->to($model->customer_email, $model->customer_name);
                         });
 
@@ -128,7 +128,7 @@ class Plugin extends PluginBase
                     if($order_status == 'cancelled' && !$sent_cancelled) {
 
                         // Send Customer Email
-                        Mail::send('artistro08.tailorstarter::mail.order_cancelled', $mail_data, function($message) use ($model) {
+                        Mail::send('artistro08.tailorstartercompanion::mail.order_cancelled', $mail_data, function($message) use ($model) {
                             $message->to($model->customer_email, $model->customer_name);
                         });
 
@@ -143,7 +143,7 @@ class Plugin extends PluginBase
                         if($order_status == 'new') {
 
                             // Send Customer Email
-                            Mail::send('artistro08.tailorstarter::mail.new_order', $mail_data, function($message) use ($model) {
+                            Mail::send('artistro08.tailorstartercompanion::mail.new_order', $mail_data, function($message) use ($model) {
                                 $message->to($model->customer_email, $model->customer_name);
                             });
 
@@ -155,7 +155,7 @@ class Plugin extends PluginBase
                         if($order_status == 'in_progress') {
 
                             // Send Customer Email
-                            Mail::send('artistro08.tailorstarter::mail.order_in_progress', $mail_data, function($message) use ($model) {
+                            Mail::send('artistro08.tailorstartercompanion::mail.order_in_progress', $mail_data, function($message) use ($model) {
                                 $message->to($model->customer_email, $model->customer_name);
                             });
 
@@ -167,7 +167,7 @@ class Plugin extends PluginBase
                         if($order_status == 'shipped') {
 
                             // Send Customer Email
-                            Mail::send('artistro08.tailorstarter::mail.order_shipped', $mail_data, function($message) use ($model) {
+                            Mail::send('artistro08.tailorstartercompanion::mail.order_shipped', $mail_data, function($message) use ($model) {
                                 $message->to($model->customer_email, $model->customer_name);
                             });
 
@@ -179,7 +179,7 @@ class Plugin extends PluginBase
                         if($order_status == 'cancelled') {
 
                             // Send Customer Email
-                            Mail::send('artistro08.tailorstarter::mail.order_cancelled', $mail_data, function($message) use ($model) {
+                            Mail::send('artistro08.tailorstartercompanion::mail.order_cancelled', $mail_data, function($message) use ($model) {
                                 $message->to($model->customer_email, $model->customer_name);
                             });
 
@@ -201,20 +201,20 @@ class Plugin extends PluginBase
 
             if (! $enable_events)
                 Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
-                    $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_events.css');
-                    $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_events.js');
+                    $controller->addCss('/plugins/artistro08/tailorstartercompanion/assets/css/disable_events.css');
+                    $controller->addJs('/plugins/artistro08/tailorstartercompanion/assets/js/disable_events.js');
                 });
 
             if (! $enable_shop)
                 Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
-                    $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_shop.css');
-                    $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_shop.js');
+                    $controller->addCss('/plugins/artistro08/tailorstartercompanion/assets/css/disable_shop.css');
+                    $controller->addJs('/plugins/artistro08/tailorstartercompanion/assets/js/disable_shop.js');
                 });
             
             if (! $enable_blog)
                 Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
-                    $controller->addCss('/plugins/artistro08/tailorstarter/assets/css/disable_blog.css');
-                    $controller->addJs('/plugins/artistro08/tailorstarter/assets/js/disable_blog.js');
+                    $controller->addCss('/plugins/artistro08/tailorstartercompanion/assets/css/disable_blog.css');
+                    $controller->addJs('/plugins/artistro08/tailorstartercompanion/assets/js/disable_blog.js');
                 });
 
         } catch (Exception $e) {
@@ -226,12 +226,12 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'artistro08.tailorstarter::mail.new_order',
-            'artistro08.tailorstarter::mail.new_order_admin',
-            'artistro08.tailorstarter::mail.order_cancelled',
-            'artistro08.tailorstarter::mail.order_in_progress',
-            'artistro08.tailorstarter::mail.order_shipped',
-            'artistro08.tailorstarter::mail.form_submission'
+            'artistro08.tailorstartercompanion::mail.new_order',
+            'artistro08.tailorstartercompanion::mail.new_order_admin',
+            'artistro08.tailorstartercompanion::mail.order_cancelled',
+            'artistro08.tailorstartercompanion::mail.order_in_progress',
+            'artistro08.tailorstartercompanion::mail.order_shipped',
+            'artistro08.tailorstartercompanion::mail.form_submission'
         ];
     }
 
