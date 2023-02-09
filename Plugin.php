@@ -235,4 +235,22 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerMarkupTags()
+    {
+        $filters = [
+            'format_money' => function ($value) {
+                // Get the settings from the site
+                $settings = GlobalRecord::findForGlobal('Content\Settings');
+
+                $currency_symbol = $settings->currency_symbol ?? '$';
+                $currency_symbol_placement = $settings->currency_symbol_placement ?? true;
+
+                return ($currency_symbol_placement == "before" ? $currency_symbol : '') . number_format($value, 2, ".", ",") . ($currency_symbol_placement == "after" ? $currency_symbol : '');
+            },
+        ];
+
+        return [
+            'filters' => $filters,
+        ];
+    }
 }
