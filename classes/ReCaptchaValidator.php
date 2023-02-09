@@ -1,4 +1,4 @@
-<?php namespace Artistro08\TailorStarter\Classes;
+<?php namespace Artistro08\TailorStarterCompanion\Classes;
 
 use Request;
 use Tailor\Models\GlobalRecord;
@@ -13,7 +13,7 @@ class ReCaptchaValidator
         $ip         = Request::getClientIp();
         $URL        = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$recaptcha&remoteip=$ip";
         $response   = json_decode(file_get_contents($URL), true);
-//        dd($response);
+
         return ($response['success'] == true);
     }
 
