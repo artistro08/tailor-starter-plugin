@@ -12,3 +12,4 @@
 1.0.14: Add a format_money twig filter to add the currency symbol on the site. Thanks @chrisvidal!
 1.0.15: Correct plugin author name
 1.0.16: Added "companion" to the code namespace for the marketplace
+1.0.17: Fixes an issue where the blog would hide any menu item named "Blog"
