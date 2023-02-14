@@ -26,6 +26,7 @@ observeBlog(".backend-dropdownmenu .item", (element) => {
 
 observeBlog(".mainmenu-item a", (element) => {
   if (element.innerText.trim() === "Blog") {
-    element.parentNode.style.display = "none";
+    if (element.innerHTML.includes("icon-newspaper-o"))
+      element.parentNode.style.display = "none";
   }
 });
