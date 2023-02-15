@@ -13,3 +13,4 @@
 1.0.15: Correct plugin author name
 1.0.16: Added "companion" to the code namespace for the marketplace
 1.0.17: Fixes an issue where the blog would hide any menu item named "Blog"
+1.0.18: Supports Disabling the search blocks when search is disabled in the theme.

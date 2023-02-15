@@ -194,10 +194,11 @@ class Plugin extends PluginBase
 
         // Hide Blocks if Shop, Events, or blog are disabled
         try {
-            $settings      = GlobalRecord::findForGlobal('Content\Settings');
-            $enable_shop   = $settings->enable_shop;
-            $enable_events = $settings->enable_events;
-            $enable_blog   = $settings->enable_blog;
+            $settings        = GlobalRecord::findForGlobal('Content\Settings');
+            $enable_shop     = $settings->enable_shop;
+            $enable_events   = $settings->enable_events;
+            $enable_blog     = $settings->enable_blog;
+            $enable_search   = $settings->enable_search;
 
             if (! $enable_events)
                 Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
@@ -215,6 +216,12 @@ class Plugin extends PluginBase
                 Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
                     $controller->addCss('/plugins/artistro08/tailorstartercompanion/assets/css/disable_blog.css');
                     $controller->addJs('/plugins/artistro08/tailorstartercompanion/assets/js/disable_blog.js');
+                });
+                
+            if (! $enable_search)
+                Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
+                    $controller->addCss('/plugins/artistro08/tailorstartercompanion/assets/css/disable_search.css');
+                    $controller->addJs('/plugins/artistro08/tailorstartercompanion/assets/js/disable_search.js');
                 });
 
         } catch (Exception $e) {
