@@ -200,6 +200,12 @@ class Plugin extends PluginBase
             $enable_blog     = $settings->enable_blog;
             $enable_search   = $settings->enable_search;
 
+            Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
+                if ($controller instanceof \Tailor\Controllers\Globals) {
+                    $controller->addJs('/plugins/artistro08/tailorstartercompanion/assets/js/companion.js');
+                }
+            });
+
             if (! $enable_events)
                 Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
                     $controller->addCss('/plugins/artistro08/tailorstartercompanion/assets/css/disable_events.css');
