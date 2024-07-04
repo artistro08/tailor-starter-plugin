@@ -16,3 +16,5 @@
 1.0.18: Supports Disabling the search blocks when search is disabled in the theme.
 1.0.19: Update code to refresh after saving globals to reflect edited content. 
 1.0.20: Code cleanup
+1.0.21: Code cleanup
+1.0.22: fix issue if order or shop is removed from tailor
